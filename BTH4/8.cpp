@@ -14,6 +14,19 @@ map<T, double> fuzzy_set_union(const map<T, double> &a, const map<T, double> &b)
     /*****************
     # YOUR CODE HERE #
     *****************/
+    std::map<int, double> x;
+    std::map<int, double> _a = a, _b = b;
+    for (auto e : _a) {
+        x.insert({e.first, e.second});
+    }
+    for (auto e : _b) {
+        if (_a.count(e.first)) {
+            x[e.first] = max(e.second, _a[e.first]);
+        } else {
+            x.insert({e.first, e.second});
+        }
+    }
+    return x;
 }
 
 template<class T>
@@ -21,6 +34,14 @@ map<T, double> fuzzy_set_intersection(const map<T, double> &a, const map<T, doub
     /*****************
     # YOUR CODE HERE #
     *****************/
+    map<int, double> x;
+    map<int, double> _a = a, _b = b;
+    for (auto e : _a) {
+        if (_b.count(e.first)) {
+            x[e.first] = min(e.second, _b[e.first]);
+        }
+    }
+    return x;
 }
 
 template<class T>
