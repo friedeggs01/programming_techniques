@@ -20,7 +20,7 @@ double area(Point a, Point b, Point c) {
     *****************/
    double area;
    area = fabs((a.first * b.second) + (b.first * c.second) + (c.first * a.second) - (b.first * a.second) - (c.first * b.second) - (a.first * c.second));
-   return area;
+   return area/2;
 }
 
 int main() {
